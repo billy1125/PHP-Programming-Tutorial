@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML表單語法</title>
+</head>
+
+<body>
+    <form name="login" method="post" action="edit_member.php">
+        帳號: <input type="text" name="Account" size="15" value="" /><br />
+        密碼: <input type="text" name="Password" size="15" value="" /><br />
+        姓名: <input type="text" name="Name" size="15" value="" /><br />
+        是否為管理員：<input type="checkbox" name="Admin" value="Y" checked disabled><br />
+        <input type="hidden" name="Id" value="" />
+        <input type="submit" value="修改" />
+    </form>
+</body>
+
+</html>
