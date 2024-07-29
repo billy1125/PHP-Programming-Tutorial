@@ -8,6 +8,9 @@ if (!isset($_GET["Account"]) || !isset($_GET["Password"])) {
     exit;
 }
 
+// 其實，!isset($_GET["Account"]) || !_GET($_POST["Password"])可以寫成
+//       isset($_GET["Account"]) == _GET || isset($_POST["Password"]) == false
+
 $Account = $_GET["Account"]; //使用者帳號，建議GET的資料要預先抓出來放到變數裡來處理，不要直接處理
 $Password = $_GET["Password"]; //密碼
 

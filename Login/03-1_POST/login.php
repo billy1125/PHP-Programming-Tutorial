@@ -8,6 +8,9 @@ if (!isset($_POST["Account"]) || !isset($_POST["Password"])) {
     exit; //exit指令出現的話，底下的PHP程式碼都會忽略不執行
 } 
 
+// 其實，!isset($_POST["Account"]) || !isset($_POST["Password"])可以寫成
+//       isset($_POST["Account"]) == false || isset($_POST["Password"]) == false
+
 $Account = $_POST["Account"]; //使用者帳號，建議POST的資料要預先抓出來放到變數裡來處理，不要直接處理
 $Password = $_POST["Password"]; //密碼
 
