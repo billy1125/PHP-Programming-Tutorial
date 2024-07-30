@@ -8,8 +8,6 @@ if (!isset($_POST["Account"]) || !isset($_POST["Password"])) {
     exit;
 }
 
-session_start();  // 啟用Session
-
 $Account = $_POST["Account"]; //使用者帳號
 $Password = $_POST["Password"]; //密碼
 $RemeberMe = "";
@@ -22,7 +20,6 @@ if (isset($_POST["RemeberMe"]))
 $handle = fopen("account.csv", "r");
 
 while ($data = fgetcsv($handle, 1000, ",")) {
-    $num = count($data);
     // 逐一讀取記錄的CSV檔案，並且將帳號密碼和陣列索引值1與2的資料作比對，如果正確$AccountCheckResult存為 true
     if ($Account == $data[1] && $Password == $data[2]) {
         $AccountCheckResult = true;

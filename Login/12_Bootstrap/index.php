@@ -24,6 +24,7 @@ if (isset($_COOKIE["LoginOK"]) && $_COOKIE["LoginOK"] == "OK") {
 <body class="text-center">    
     <main class="form-signin">
     <form name="login" method="post" action="login.php">
+        <h1 class="h1 mb-3 fw-normal">🔒</h1>
         <h1 class="h1 mb-3 fw-normal">登入系統</h1>
         <p>Ver 11.0 經過美化後的版本</p>
         <div class="form-floating">

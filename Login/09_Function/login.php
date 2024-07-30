@@ -8,7 +8,6 @@ if (!isset($_POST["Account"]) || !isset($_POST["Password"])) {
     exit;
 }
 
-session_start();  // 啟用Session
 require("functions.php"); // require() 引用別的PHP檔案
 
 $Account = $_POST["Account"]; //使用者帳號

@@ -19,10 +19,11 @@ $AccountCheckResult = false;
 if (isset($_POST["RemeberMe"]))
     $RemeberMe = $_POST["RemeberMe"];
 
-// 函式：讀取帳號記錄的CSV檔案，我們將程式模組化，讓你的程式看起來更容易閱讀與修改
+// 函式：查詢是否具有特定帳密
 $AccountCheckResult = Account_Check($Account, $Password); 
 
-if ($AccountCheckResult) {
+// 確認回傳的查詢結果是否有資料？有代表帳號密碼的配對在資料庫有資料，沒有代表帳密查不到相對應的資料，也就是帳號密碼是錯誤的
+if (!empty($AccountCheckResult)) {
 
     $date = "";
 
