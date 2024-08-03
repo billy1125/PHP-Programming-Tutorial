@@ -34,8 +34,8 @@ if (!empty($AccountCheckResult)) {
     setcookie("LoginOK", "OK", $date); 
 
     echo "<h1>你已成功登入系統</h1>";
-    echo "<p>你的帳號是：$Account<p>";
-    echo "<p>你的密碼是：$Password<p>";
+    echo "<p>你的帳號是：" . $Account . "<p>";
+    echo "<p>你的密碼是：" . $Password . "<p>";
     echo "<p>5秒後頁面將自動跳轉到會員專屬頁面！</p>";
 
     header("refresh:5; url=vip.php");
