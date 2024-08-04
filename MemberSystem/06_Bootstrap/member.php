@@ -63,7 +63,7 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") {
 
 <div class="col-lg-8 mx-auto p-3 py-md-5">
     <h1 class="h1">使用者：<?php echo $name ?></h1>
-    <form name="login" method="post" action="edit_member.php?id=<?php echo $id ?>">
+    <form name="login" method="post" action="member.php?id=<?php echo $id ?>">
         <div class="form-floating">
             <input class="form-control" type="text" name="Account" size="15" value="<?php echo $account ?>" placeholder="帳號" /><br />
             <label for="floatingInput">帳號</label>

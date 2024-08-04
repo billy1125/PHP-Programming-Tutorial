@@ -61,10 +61,11 @@ function Account_Check(string $_account, string $_password)
 function Check_Member_Authority()
 {    
     if (isset($_SESSION["admin"])) {
+        echo "<p>你過去已經登入過，5秒後頁面將自動跳轉到你的專屬頁面！</p>";
         if ($_SESSION["admin"] == "Y") {
             header("refresh:5; url=admin.php"); // 如果SESSION['admin']是Y，代表使用者有管理者權限，導引到管理者頁面
         } else {
-            header("refresh:5; url=edit_member.php"); // 一般使用者，導引到一般會員頁面
+            header("refresh:5; url=member.php"); // 一般使用者，導引到一般會員頁面
         }
     }
 }

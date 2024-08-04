@@ -2,7 +2,7 @@
 //檢查有沒有名稱是"LoginOK"的Cookie，也檢查值是不是OK，沒有就直接把使用者帶到登入首頁
 if (isset($_COOKIE["LoginOK"]) && $_COOKIE["LoginOK"] == "OK") {
     session_start();  // 啟用Session
-    require("functions.php"); // require() 引用別的PHP檔案
+    require("functions.php"); // require() 引用別的PHP檔案    
     Check_Member_Authority(); // 導引到會員分流頁面
     exit;
 }

@@ -7,10 +7,18 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") {
     exit;
 } else {
     require("functions.php"); // require() 引用別的PHP檔案
+    session_start();  // 啟用Session
 
     if (isset($_GET["id"])) {
         // 刪除使用者資料
-        $DeleteResult = Delete_Member($_GET["id"]);
+        if ($_SESSION["id"] == $_GET["id"]){
+            $DeleteResult = false;
+            echo "你不能刪除你自己！";
+        }
+        else
+        {
+            $DeleteResult = Delete_Member($_GET["id"]);
+        }        
 
         if ($DeleteResult == true) {
             echo "帳號刪除成功！";

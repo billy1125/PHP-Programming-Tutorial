@@ -1,8 +1,7 @@
 <?php
 session_start();
-
 // 檢查有沒有Login的Cookie，也檢查是不是管理員？
-if ((!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") &&
+if ((!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") ||
    (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== "Y")) {
     echo "<h1>這是一個秘密網頁，你不是管理員，不能進來</h1>";
     echo "<a href='index.php'>回到登入首頁！</a>";

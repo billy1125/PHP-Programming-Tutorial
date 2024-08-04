@@ -15,10 +15,6 @@ require("functions.php"); // require() 引用別的PHP檔案
 $Account = $_POST["Account"]; //使用者帳號
 $Password = $_POST["Password"]; //密碼
 $RemeberMe = isset($_POST["RemeberMe"]) ? $_POST["RemeberMe"] : ""; // 記住我。簡化過的判斷式，你可以跟以下原來的程式作個比較
-
-// if (isset($_POST["RemeberMe"]))
-//     $RemeberMe = $_POST["RemeberMe"];
-
 $AccountCheckResult = Account_Check($Account, $Password); // 帳號密碼驗證
 
 if (!empty($AccountCheckResult)) {
@@ -37,7 +33,6 @@ if (!empty($AccountCheckResult)) {
 
     setcookie("LoginOK", "OK", $date); // 建立LoginOK的Cookie，用來辨識使用者是否已經成功驗證帳號密碼   
     
-    // 如果是直接導引，沒有要顯示5秒後跳轉，你可以想想這是不是必要的？又要如何去做？
     echo "<h1>你已成功登入系統</h1>";
     echo "<p>你的帳號是：" . $Account . "<p>";
     echo "<p>你的密碼是：" . $Password . "<p>";

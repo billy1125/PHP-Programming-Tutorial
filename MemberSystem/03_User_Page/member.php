@@ -20,9 +20,9 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") {
                                           $_GET["id"]);
 
             if ($UpdateResult == true) {
-                echo "{$_POST["Name"]}帳號更新成功！";
+                echo $_POST["Name"] . "帳號更新成功！";
             } else {
-                echo "{$_POST["Name"]}帳號更新失敗！";
+                echo $_POST["Name"] . "帳號更新失敗！";
             }
         }
 
@@ -44,12 +44,12 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>修改會員資料頁面</title>
+    <title>管理者頁面</title>
 </head>
 
 <body>
     <h1>使用者：<?php echo $name ?></h1>
-    <form name="login" method="post" action="edit_member.php?id=<?php echo $id ?>">
+    <form name="login" method="post" action="member.php?id=<?php echo $id ?>">
         帳號: <input type="text" name="Account" size="15" value="<?php echo $account ?>" /><br />
         密碼: <input type="text" name="Password" size="15" value="<?php echo $password ?>" /><br />
         姓名: <input type="text" name="Name" size="15" value="<?php echo $name ?>" /><br />

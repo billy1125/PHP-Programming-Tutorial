@@ -20,7 +20,7 @@ if (isset($_COOKIE["LoginOK"]) && $_COOKIE["LoginOK"] == "OK") {
 
 <body>
     <h1>會員系統 Ver 4.0</h1>
-    <p>修改管理者頁面，增加新增會員功能</p>
+    <p>修改管理者頁面，增加管理與新增會員功能</p>
     <hr>
     <form name="login" method="post" action="login.php">
         帳號: <input type="text" name="Account" size="15" /><br />

@@ -8,7 +8,7 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") {
 } else {
     require("functions.php"); // require() 引用別的PHP檔案
 
-    //檢查有沒有來自edit_member.php的POST，如果有，才更新使用者資料
+    //檢查有沒有來自member.php的POST，如果有，才更新使用者資料
     if (isset($_POST["Account"]) && isset($_POST["Password"]) && isset($_POST["Name"])) {
         if ($_POST["Account"] != "" && $_POST["Password"] != "" && $_POST["Name"] != "") {
             // 更新使用者資料
@@ -20,9 +20,9 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") {
             );
 
             if ($InsertResult == true)
-                echo "{$_POST["Name"]}帳號新增成功！";
+                echo $_POST["Name"] . "帳號新增成功！";
             else
-                echo "{$_POST["Name"]}帳號新增失敗！";
+                echo $_POST["Name"] . "帳號新增失敗！";
             
             echo "五秒鐘回到管理者頁面";
             header("refresh:5; url=admin.php");

@@ -15,17 +15,28 @@ require("functions.php"); // require() 引用別的PHP檔案
 $Account = $_POST["Account"];                                       // 使用者帳號
 $Password = $_POST["Password"];                                     // 密碼
 $RemeberMe = isset($_POST["RemeberMe"]) ? $_POST["RemeberMe"] : ""; // 記住我
-$AccountCheckResult = Account_Check($Account, $Password);           // 帳號密碼驗證
+$AccountCheckResult = Account_Check($Account, $Password); // 帳號密碼驗證
 
-if ($AccountCheckResult) {
+if (!empty($AccountCheckResult)) {
+    // 設定SESSION，將使用者的資料記錄起來
+    $_SESSION["id"] = $AccountCheckResult['id'];
+    $_SESSION["account"] = $AccountCheckResult['account'];
+    $_SESSION["password"] = $AccountCheckResult['password'];
+    $_SESSION["name"] = $AccountCheckResult['name'];
+    $_SESSION["admin"] = $AccountCheckResult['admin'];
+    
     // 依據有沒有勾選記住我？來設定LoginOK的Cookie的期限
-    $date = ($RemeberMe == "YesRememberMe") ? strtotime("+10 days", time()) : strtotime("+1 minutes", time());
+    if ($RemeberMe == "YesRememberMe")
+        $date = strtotime("+10 days", time());
+    else
+        $date = strtotime("+1 minutes", time());
 
-    setcookie("LoginOK", "OK", $date); // 建立LoginOK的Cookie，用來辨識使用者是否已經成功驗證帳號密碼
-
+    setcookie("LoginOK", "OK", $date); // 建立LoginOK的Cookie，用來辨識使用者是否已經成功驗證帳號密碼   
+    
+    // 如果是直接導引，沒有要顯示5秒後跳轉，你可以想想這是不是必要的？又要如何去做？
     echo "<h1>你已成功登入系統</h1>";
-    echo "<p>你的帳號是：{$Account}<p>";
-    echo "<p>你的密碼是：{$Password}<p>";
+    echo "<p>你的帳號是：" . $Account . "<p>";
+    echo "<p>你的密碼是：" . $Password . "<p>";
     echo "<p>5秒後頁面將自動跳轉到你的專屬頁面！</p>";
 
     Check_Member_Authority(); // 導引到會員分流頁面
