@@ -5,7 +5,7 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] != "OK") {
 } else {
     session_start();
     require("functions.php");
-    $MemeberLink = "edit_member.php";
+    $MemeberLink = "member.php";
     if ($_SESSION["admin"] == "Y")
         $MemeberLink = "admin.php";
 }
@@ -25,7 +25,7 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] != "OK") {
     <h1>簡易討論板 Ver 4.0</h1>
     <p>讓使用者可以發表新文章</p>
     <hr>
-    <p><a href='logout.php'>登出</a> || <a href='add_new_post.php'>發表新主題</a>  || <a href='Member/<?php echo $MemeberLink ?>?id=<?php echo $_SESSION['id'] ?>'>會員資料管理</a> </p>
+    <p><a href='logout.php'>登出</a> || <a href='add_new_post.php'>發表新主題</a> || <a href='Member/<?php echo $MemeberLink ?>?id=<?php echo $_SESSION['id'] ?>'>會員資料管理</a> </p>
     <h2>所有討論文章</h2>
     <table border="1">
         <tr>

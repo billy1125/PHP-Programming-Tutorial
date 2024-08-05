@@ -5,7 +5,7 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] != "OK") {
 } else {
     session_start();
     require("functions.php");
-    $MemeberLink = "edit_member.php"; // 預設會員管理頁面是一般使用者的
+    $MemeberLink = "member.php"; // 預設會員管理頁面是一般使用者的
     if ($_SESSION["admin"] == "Y")
         $MemeberLink = "admin.php"; // 如果你是管理員，會員管理頁面是管理者專屬頁面
 }

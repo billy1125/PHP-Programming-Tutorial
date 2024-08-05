@@ -1,4 +1,5 @@
 <?php
+session_start();
 //檢查有沒有名稱是"LoginOK"的Cookie，也檢查值是不是OK，沒有就直接把使用者帶到登入首頁
 if ((!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") &&
     (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== "Y")
@@ -7,8 +8,7 @@ if ((!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") &&
     echo "<a href='../index.php'>回到登入首頁！</a>";
 
     exit;
-} else {
-    session_start();
+} else {    
     require("../functions.php"); // require() 引用別的PHP檔案
 }
 ?>
@@ -39,14 +39,12 @@ if ((!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") &&
 
         foreach ($temp as $row) { // 依序讀取每一行
             echo "<tr>";
-            foreach ($row as $key => $value) { // 在每一行依序讀取每一個欄位
-                if ($key == "id") // 如果這個欄位是id，要建立有超連結的資料
-                {
-                    echo "<td><a href = 'delete_member.php?id={$value}'>刪除</a></td>";
-                    echo "<td><a href = 'edit_member.php?id={$value}'>{$value}</a></td>";
-                } else
-                    echo "<td>{$value}</td>";
-            }
+            echo "<td><a href = 'delete_member.php?id={$row["id"]}'>刪除</a></td>";
+            echo "<td><a href = 'member.php?id={$row["id"]}'>{$row["id"]}</a></td>";
+            echo "<td>{$row["account"]}</td>";
+            echo "<td>{$row["password"]}</td>";
+            echo "<td>{$row["name"]}</td>";
+            echo "<td>{$row["admin"]}</td>";           
             echo "</tr>";
         }
 

@@ -8,13 +8,19 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] != "OK") {
     // 檢查有沒有post_id的GET，這要用來查詢特定的回文清單
     if (isset($_GET["post_id"])) {
         $post_id = $_GET['post_id'];
+        $title = Query_One_Post_Title($post_id);
 
         // 檢查是不是從「自己」送出來的POST，如果有收到，亦即使用者要快速回文，我們利用文章標題的ID、使用者ID、回文的內容，來更新回文post_detail資料表
-        if (isset($_POST["post_id"]) && isset($_POST["user_id"]) && isset($_POST["message"]))
-            if (Add_Post_Detail($_POST["post_id"], $_POST["user_id"], $_POST["message"]) == true) // 新增回文的函式
-                echo "<h1>發文成功</h1>";
-            else
-                echo "<h1>發文失敗</h1>";
+        if (isset($_POST["post_id"]) && isset($_POST["user_id"]) && isset($_POST["message"])){       
+            if (empty($_POST["message"])){
+                echo "<h1>請輸入回文內容</h1>";  // 檢查使用者有沒有輸入回文內容
+            }else{
+                if (Add_Post_Detail($_POST["post_id"], $_POST["user_id"], $_POST["message"]) == true) // 新增回文的函式
+                    echo "<h1>發文成功</h1>";
+                else
+                    echo "<h1>發文失敗</h1>";
+            }   
+        }        
     } else {
         header("location:index.php");
     }
@@ -37,7 +43,7 @@ if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] != "OK") {
 </head>
 
 <body>
-    <h1><?php echo Query_One_Post_Title($post_id); ?></h1>
+    <h1><?php echo $title['title'] ?></h1>
     <hr>
     <p><a href='index.php'>回文章列表</a></p>
     <h2>所有討論文章</h2>

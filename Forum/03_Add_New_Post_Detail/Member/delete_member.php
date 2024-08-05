@@ -2,15 +2,23 @@
 //檢查有沒有名稱是"LoginOK"的Cookie，也檢查值是不是OK，沒有就直接把使用者帶到登入首頁
 if (!isset($_COOKIE["LoginOK"]) || $_COOKIE["LoginOK"] !== "OK") {
     echo "<h1>這是一個秘密網頁，你不是會員，不能進來</h1>";
-    echo "<a href='../index.php'>回到登入首頁！</a>";
+    echo "<a href='index.php'>回到登入首頁！</a>";
 
     exit;
 } else {
     require("../functions.php"); // require() 引用別的PHP檔案
+    session_start();  // 啟用Session
 
     if (isset($_GET["id"])) {
         // 刪除使用者資料
-        $DeleteResult = Delete_Member($_GET["id"]);
+        if ($_SESSION["id"] == $_GET["id"]){
+            $DeleteResult = false;
+            echo "你不能刪除你自己！";
+        }
+        else
+        {
+            $DeleteResult = Delete_Member($_GET["id"]);
+        }        
 
         if ($DeleteResult == true) {
             echo "帳號刪除成功！";
