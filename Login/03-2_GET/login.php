@@ -15,8 +15,8 @@ $Account = $_GET["Account"]; //使用者帳號，建議GET的資料要預先抓�
 $Password = $_GET["Password"]; //密碼
 
 echo "<h1>你有成功利用GET傳資料過來</h1>";
-echo "<p>你的帳號是：" . $_GET["Account"];
-echo "<p>你的密碼是：" . $_GET["Password"];
+echo "<p>你的帳號是：" . $Account;
+echo "<p>你的密碼是：" . $Password;
 echo "<p>我們利用HTTP標頭處理的方法，5秒後將頁面自動跳轉到登入首頁！</p>";
 
 header("refresh:5; url=index.php");
